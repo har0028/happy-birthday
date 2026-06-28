@@ -1,0 +1,190 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-pink: var(--pink);
+  --color-rose: var(--rose);
+  --color-purple: var(--purple);
+  --color-violet: var(--violet);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", serif;
+  --font-script: "Dancing Script", cursive;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Dreamy night palette */
+  --background: oklch(0.14 0.05 300);
+  --foreground: oklch(0.97 0.02 320);
+  --card: oklch(0.22 0.07 305 / 0.45);
+  --card-foreground: oklch(0.98 0.02 320);
+  --popover: oklch(0.22 0.07 305);
+  --popover-foreground: oklch(0.98 0.02 320);
+  --primary: oklch(0.78 0.18 350);
+  --primary-foreground: oklch(0.18 0.05 300);
+  --secondary: oklch(0.55 0.22 300);
+  --secondary-foreground: oklch(0.98 0.02 320);
+  --muted: oklch(0.25 0.05 300);
+  --muted-foreground: oklch(0.78 0.04 320);
+  --accent: oklch(0.85 0.16 80);
+  --accent-foreground: oklch(0.18 0.05 300);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 0.12);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.78 0.18 350);
+
+  --pink: oklch(0.82 0.16 350);
+  --rose: oklch(0.72 0.2 10);
+  --purple: oklch(0.55 0.22 300);
+  --violet: oklch(0.45 0.2 290);
+  --gold: oklch(0.85 0.16 85);
+  --gold-soft: oklch(0.92 0.1 90);
+
+  --gradient-romance: linear-gradient(135deg, oklch(0.78 0.18 350), oklch(0.55 0.22 300));
+  --gradient-aurora: linear-gradient(135deg, oklch(0.55 0.22 300), oklch(0.82 0.16 350), oklch(0.85 0.16 85));
+  --gradient-night: radial-gradient(ellipse at top, oklch(0.22 0.09 290), oklch(0.08 0.04 295) 70%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.92 0.1 90), oklch(0.78 0.18 70));
+
+  --shadow-glow: 0 0 60px oklch(0.78 0.18 350 / 0.45), 0 0 120px oklch(0.55 0.22 300 / 0.25);
+  --shadow-gold: 0 0 40px oklch(0.85 0.16 85 / 0.55);
+  --shadow-soft: 0 30px 80px -20px oklch(0.1 0.05 300 / 0.8);
+}
+
+.dark {
+  --background: oklch(0.1 0.04 300);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background: var(--background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background: var(--pink);
+    color: var(--background);
+  }
+}
+
+@utility glass {
+  background: oklch(1 0 0 / 0.06);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid oklch(1 0 0 / 0.12);
+  box-shadow: 0 20px 60px -20px oklch(0.1 0.05 300 / 0.6), inset 0 1px 0 oklch(1 0 0 / 0.08);
+}
+
+@utility glass-strong {
+  background: oklch(0.22 0.07 305 / 0.55);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid oklch(1 0 0 / 0.16);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 oklch(1 0 0 / 0.1);
+}
+
+@utility text-gradient-romance {
+  background: var(--gradient-romance);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-gold {
+  background: var(--gradient-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-aurora {
+  background: var(--gradient-aurora);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility glow-pink {
+  box-shadow: 0 0 30px oklch(0.78 0.18 350 / 0.6), 0 0 60px oklch(0.78 0.18 350 / 0.3);
+}
+
+@utility glow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility night-bg {
+  background: var(--gradient-night);
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(var(--drift, 30px)); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0,0); }
+  50% { transform: translate(20px, -30px); }
+}
+
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  25% { transform: scaleY(1.1) scaleX(0.95); opacity: 0.9; }
+  50% { transform: scaleY(0.95) scaleX(1.05); opacity: 1; }
+  75% { transform: scaleY(1.05) scaleX(0.98); opacity: 0.95; }
+}
+
+@keyframes aurora {
+  0%, 100% { transform: translateX(-10%) skewX(-10deg); opacity: 0.5; }
+  50% { transform: translateX(10%) skewX(10deg); opacity: 0.9; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-twinkle { animation: twinkle var(--dur, 3s) ease-in-out infinite; }
+.animate-drift { animation: drift 8s ease-in-out infinite; }
+.animate-flicker { animation: flicker 0.15s ease-in-out infinite; transform-origin: bottom center; }
+.animate-aurora { animation: aurora 12s ease-in-out infinite; }
